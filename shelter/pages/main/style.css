@@ -1,5 +1,19 @@
 @import url("adaptive.css");
 
+@font-face {
+  font-family: "Georgia";
+  src: url("../../assets/fonts/georgia/georgia-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Arial";
+  src: url("../../assets/fonts/arial/arial-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
 body {
   padding: 0px;
   margin: 0px;
@@ -184,7 +198,13 @@ img {
 .not-only__btn {
   max-width: 207px;
   height: 52px;
-
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
 }
 
 .not-only__btn:hover {
@@ -289,11 +309,11 @@ img {
 
 .our-friends__item:hover {
   cursor: pointer;
-  background:  #FFFFFF;
+  background: #FFFFFF;
 }
 
 .our-friends__item:hover .btn2 {
-  background:  #F1CDB3;
+  background: #F1CDB3;
 }
 
 .btn2:hover {
