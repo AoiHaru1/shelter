@@ -1,3 +1,5 @@
+@import url("adaptive.css");
+
 body {
   padding: 0px;
   margin: 0px;
@@ -94,8 +96,9 @@ img {
   font-weight: 100;
   letter-spacing: 0.1em;
   color: #FFFFFF;
-  margin-top: 9px;
-  margin-left: 5px;
+  display: block;
+  margin-top: 10px;
+  margin-left: 4px;
   color: #d5d3d3;
 }
 
@@ -112,7 +115,7 @@ img {
   color: #c2bebe;
   position: relative;
   cursor: pointer;
-  height: 17px;
+  height: 13px;
 }
 
 .header__item:hover a {
@@ -175,6 +178,7 @@ img {
   font-size: 15px;
   line-height: 160%;
   color: #bab7b7;
+  margin-top: 1px;
 }
 
 .not-only__btn {
@@ -285,7 +289,7 @@ img {
 
 .our-friends__item:hover {
   cursor: pointer;
-  background: #e9e8e8;
+  background:  #FFFFFF;
 }
 
 .our-friends__item:hover .btn2 {
@@ -294,6 +298,7 @@ img {
 
 .btn2:hover {
   background: #FDDCC4 !important;
+  border-color: #FDDCC4 !important;
 }
 
 .our-friends__item-img {
@@ -412,6 +417,7 @@ img {
   margin-top: 33px;
 }
 
+
 .help__item:nth-of-type(6) .help__item-title {
   margin-top: 32px;
   margin-left: 2px;
@@ -486,6 +492,10 @@ img {
 
 .in-addition__card-container:hover {
   background: #FDDCC4;
+}
+
+.card-link {
+  max-width: 349px;
 }
 
 .in-addition__card-number {
