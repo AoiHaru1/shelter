@@ -1,4 +1,8 @@
 const headerListItems = document.querySelectorAll('.header__item');
+const burgerIcon = document.querySelector('.hamburger-lines');
+const popupMenu = document.querySelector('.pop-up-menu');
+const header = document.querySelector('.header');
+
 
 //active class switch in header
 
@@ -21,4 +25,12 @@ headerListItems[3].addEventListener('click', () => {
   activeClassRemover('active');
   headerListItems[3].classList.toggle('active');
   delayedSwapBack('active');
+})
+
+// burger 
+
+burgerIcon.addEventListener('click', () => {
+  burgerIcon.classList.toggle('burger-flip');
+  header.classList.toggle('header-pets-change');
+  popupMenu.classList.toggle('popup-right');
 })
