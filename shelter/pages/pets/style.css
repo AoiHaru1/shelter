@@ -488,7 +488,8 @@ button span {
     background-size: cover;
     min-height: 375px;
     justify-content: center;
-    margin-top: -18px
+    margin-top: -18px;
+    min-height: 639px;
   }
 
   .footer__contact-info {
@@ -496,8 +497,9 @@ button span {
   }
 
   .footer__dog-img {
-    margin-left: 0px;
+    margin-left: 270px;
     margin-top: 64px;
+    padding-right: 270px;
   }
 
   .location-icon {
@@ -523,9 +525,10 @@ button span {
   }
 }
 
-@media(max-width: 1007px) {
-  .footer {
-    min-height: 639px;
+@media (max-width: 870px) {
+  .footer__dog-img {
+    padding: 0;
+    margin-left: 0;
   }
 }
 

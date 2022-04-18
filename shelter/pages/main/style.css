@@ -835,7 +835,7 @@ img {
     align-items: center;
     background-image: url("../../assets/images/footer-gradient-background\ \(1\).png");
     background-size: cover;
-    min-height: 375px;
+    min-height: 639px;
     justify-content: center;
     margin-top: -18px
   }
@@ -845,8 +845,9 @@ img {
   }
 
   .footer__dog-img {
-    margin-left: 0px;
+    margin-left: 270px;
     margin-top: 64px;
+    padding-right: 270px;
   }
 
   .location-icon {
@@ -872,9 +873,10 @@ img {
   }
 }
 
-@media(max-width: 997px) {
-  .footer {
-    min-height: 639px
+@media (max-width: 870px) {
+  .footer__dog-img {
+    padding: 0;
+    margin-left: 0;
   }
 }
 
