@@ -1019,14 +1019,6 @@ img {
     bottom: 110px;
   }
 
-  .arrow-left {
-    left: 21%;
-  }
-
-  .arrow-right {
-    right: 21%;
-  }
-
   .header {
     padding-top: 31px;
   }
@@ -1242,13 +1234,22 @@ img {
     height: 135px;
     margin-top: 5px;
   }
-}
 
-@media(max-width: 420px) {
+  .arrow-left {
+    left: calc(50% - 92px);
+  }
+
+  .arrow-right {
+    left: calc(50% + 40px);
+  }
+
   .arrow-left, .arrow-right {
     position: absolute;
     bottom: 135px;
   }
+}
+
+@media(max-width: 420px) {
 
   .help {
     padding-top: 1px;
