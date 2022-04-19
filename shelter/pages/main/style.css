@@ -179,10 +179,16 @@ img {
 
 /* main */
 
+
+
 /* not-only */
+.not-only-fixer {
+  background-image: url("../../assets/images/start-screen-gradient-background.png");
+  background-size: cover;
+}
+
 .not-only {
   height: 908px;
-  background-image: url("../../assets/images/start-screen-gradient-background.png");
   display: flex;
   justify-content: space-between;
 }
@@ -283,12 +289,15 @@ img {
 
 /* our-friends */
 
+.our-friends-fixer {
+  background: #F6F6F6;
+}
+
 .our-friends {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 59px;
-  background: #F6F6F6;
   padding-bottom: 100px;
 }
 
@@ -466,9 +475,12 @@ img {
 
 /* in-addition */
 
+.in-addition-fixer {
+  background-color: #F6F6F6;
+}
+
 .in-addition {
   display: flex;
-  background-color: #F6F6F6;
   padding-top: 80px;
   padding-bottom: 116px;
   align-items: center;
@@ -540,11 +552,15 @@ img {
 
 /* footer */
 
+.footer-fixer {
+  background-image: url("../../assets/images/footer-gradient-background.png");
+  background-size: cover;
+}
+
 .footer {
   display: flex;
   gap: 157px;
   align-items: center;
-  background-image: url("../../assets/images/footer-gradient-background.png");
   height: 350px;
   margin-top: -18px
 }
@@ -746,10 +762,13 @@ img {
 
   /* not-only*/
 
+  .not-only-fixer {
+    background-image: url("../../assets/images/start-screen-gradient-background\ \(1\).png");
+  }
+
   .not-only {
     height: 1165px;
     flex-direction: column;
-    background-image: url("../../assets/images/start-screen-gradient-background\ \(1\).png");
     background-repeat: no-repeat;
     background-size: cover;
     align-items: center;
@@ -827,13 +846,16 @@ img {
 }
 
 @media(max-width: 1279px) {
+  .footer-fixer {
+    background-image: url("../../assets/images/footer-gradient-background\ \(1\).png");
+  }
+
   .footer {
     display: flex;
     flex-wrap: wrap;
     column-gap: 55px;
     row-gap: 1px;
     align-items: center;
-    background-image: url("../../assets/images/footer-gradient-background\ \(1\).png");
     background-size: cover;
     min-height: 639px;
     justify-content: center;
@@ -975,13 +997,16 @@ img {
 }
 
 @media (max-width: 767px) {
+  .footer-fixer {
+    background-image: url("../../assets/images/footer-gradient-background\ \(3\).png")
+  }
+
   .footer {
     height: 809px;
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: flex-start;
     gap: 7px;
-    background-image: url("../../assets/images/footer-gradient-background\ \(3\).png")
   }
 
   .footer__contact-info, .footer__location {

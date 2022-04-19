@@ -11,20 +11,20 @@
 </head>
 
 <body class="body">
-  <div class="wrapper">
-    <div class="pop-up-menu">
-      <div class="popup__title-block">
-        <a href="#!">
-          <h1 class="popup__title">Cozy House</h1>
-        </a>
-        <a href="#!"><span class="popup__title-description">Shelter for pets in Boston</span></a>
-      </div>
-      <ul class="pop-up__list">
-        <li class="popup__item active"><a href="../../pages/main/index.html">About the shelter</a></li>
-        <li class="popup__item"><a href="../../pages/pets/index.html">Our pets</a></li>
-        <li class="popup__item"><a href="../../pages/main/index.html#help">Help the shelter</a></li>
-        <li class="popup__item"><a href="#contacts">Contacts</a></li>
+  <div class="pop-up-menu">
+    <div class="popup__title-block">
+      <a href="#!">
+        <h1 class="popup__title">Cozy House</h1>
+      </a>
+      <a href="#!"><span class="popup__title-description">Shelter for pets in Boston</span></a>
     </div>
+    <ul class="pop-up__list">
+      <li class="popup__item active"><a href="../../pages/main/index.html">About the shelter</a></li>
+      <li class="popup__item"><a href="../../pages/pets/index.html">Our pets</a></li>
+      <li class="popup__item"><a href="../../pages/main/index.html#help">Help the shelter</a></li>
+      <li class="popup__item"><a href="#contacts">Contacts</a></li>
+  </div>
+  <div class="wrapper">
     <header class="header padding">
       <div class="header__wrapper">
         <div class="header__title-block">
@@ -34,31 +34,37 @@
           <a href="#"><span class="header__title-description">Shelter for pets in Boston</span></a>
         </div>
         <nav class="navigation">
-        <ul class="header__item-list">
-          <li class="header__item active"><a href="">About the shelter</a></li>
-          <li class="header__item"><a href="../../pages/pets/index.html">Our pets</a></li>
-          <li class="header__item"><a href="#help">Help the shelter</a></li>
-          <li class="header__item"><a href="#contacts">Contacts</a></li>
-        </ul>
-      </nav>
-      <div class="hamburger-lines">
-        <span class="line line1"></span>
-        <span class="line line2"></span>
-        <span class="line line3"></span>
-      </div>
+          <ul class="header__item-list">
+            <li class="header__item active"><a href="">About the shelter</a></li>
+            <li class="header__item"><a href="../../pages/pets/index.html">Our pets</a></li>
+            <li class="header__item"><a href="#help">Help the shelter</a></li>
+            <li class="header__item"><a href="#contacts">Contacts</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger-lines">
+          <span class="line line1"></span>
+          <span class="line line2"></span>
+          <span class="line line3"></span>
+        </div>
       </div>
     </header>
-    <main class="main padding">
-      <section class="not-only">
-        <div class="not-only__content">
-          <h2 class="not-only__title">Not only people need a house</h2>
-          <span class="not-only__description">We offer to give a chance to a little and nice puppy with an extremely
-            wide and
-            open heart. He or she will love you more than anybody else in the world, you will see!</span>
-          <button class="not-only__btn btn" onclick="location.href='#friends'">Make a friend</button>
-        </div>
-        <img src="../../assets/images/start-screen-puppy.png" alt="puppy" class="not-only__puppy-img">
-      </section>
+  </div>
+  <main class="main padding">
+    <div class="not-only-fixer">
+      <div class="wrapper">
+        <section class="not-only">
+          <div class="not-only__content">
+            <h2 class="not-only__title">Not only people need a house</h2>
+            <span class="not-only__description">We offer to give a chance to a little and nice puppy with an extremely
+              wide and
+              open heart. He or she will love you more than anybody else in the world, you will see!</span>
+            <button class="not-only__btn btn" onclick="location.href='#friends'">Make a friend</button>
+          </div>
+          <img src="../../assets/images/start-screen-puppy.png" alt="puppy" class="not-only__puppy-img">
+        </section>
+      </div>
+    </div>
+    <div class="wrapper">
       <section class="about">
         <img src="../../assets/images/about-pets.png" alt="" class="about__pets-image">
         <div class="about__text-content">
@@ -74,101 +80,119 @@
           </p>
         </div>
       </section>
-      <section class="our-friends" id="friends">
-        <h2 class="our-friends__title">Our friends who <br> are looking for a house</h2>
-        <div class="our-friends__inner-content">
-          <button class="arrow-left">
-            <svg xmlns="http://www.w3.org/2000/svg" class="arrow-symbol-left" width="14" height="6" viewBox="0 0 14 6"
-              fill="none">
-              <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929" />
-            </svg>
-          </button>
-          <div class="our-friends__item-list">
-            <div class="our-friends__item">
-              <img src="../../assets/images/pets-katrine.png" alt="katrine" class="our-friends__item-img">
-              <h4 class="our-friends__item-title">Katrine</h4>
-              <button class="our-friends__item-button btn2">Learn more</button>
+    </div>
+    <div class="our-friends-fixer">
+      <div class="wrapper">
+        <section class="our-friends" id="friends">
+          <h2 class="our-friends__title">Our friends who <br> are looking for a house</h2>
+          <div class="our-friends__inner-content">
+            <button class="arrow-left">
+              <svg xmlns="http://www.w3.org/2000/svg" class="arrow-symbol-left" width="14" height="6" viewBox="0 0 14 6"
+                fill="none">
+                <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929" />
+              </svg>
+            </button>
+            <div class="our-friends__item-list">
+              <div class="our-friends__item">
+                <img src="../../assets/images/pets-katrine.png" alt="katrine" class="our-friends__item-img">
+                <h4 class="our-friends__item-title">Katrine</h4>
+                <button class="our-friends__item-button btn2">Learn more</button>
+              </div>
+              <div class="our-friends__item">
+                <img src="../../assets/images/pets-jennifer.png" alt="Jennifer" class="our-friends__item-img">
+                <h4 class="our-friends__item-title">Jennifer</h4>
+                <button class="our-friends__item-button btn2">Learn more</button>
+              </div>
+              <div class="our-friends__item">
+                <img src="../../assets/images/pets-woody.png" alt="Woody" class="our-friends__item-img">
+                <h4 class="our-friends__item-title">Woody</h4>
+                <button class="our-friends__item-button btn2">Learn more</button>
+              </div>
             </div>
-            <div class="our-friends__item">
-              <img src="../../assets/images/pets-jennifer.png" alt="Jennifer" class="our-friends__item-img">
-              <h4 class="our-friends__item-title">Jennifer</h4>
-              <button class="our-friends__item-button btn2">Learn more</button>
-            </div>
-            <div class="our-friends__item">
-              <img src="../../assets/images/pets-woody.png" alt="Woody" class="our-friends__item-img">
-              <h4 class="our-friends__item-title">Woody</h4>
-              <button class="our-friends__item-button btn2">Learn more</button>
-            </div>
+            <button class="arrow-right">
+              <svg xmlns="http://www.w3.org/2000/svg" class="arrow-symbol-right" width="14" height="6"
+                viewBox="0 0 14 6" fill="none">
+                <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929" />
+              </svg>
+            </button>
           </div>
-          <button class="arrow-right">
-            <svg xmlns="http://www.w3.org/2000/svg" class="arrow-symbol-right" width="14" height="6" viewBox="0 0 14 6"
-              fill="none">
-              <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929" />
-            </svg>
-          </button>
+          <button class="our-friends__button btn" onclick="location.href='../../pages/pets/index.html'">Get to know the
+            rest</button>
+        </section>
+      </div>
+    </div>
+    <section class="help" id="help">
+      <h2 class="help__title">How you can help our shelter</h2>
+      <div class="help__item-list">
+        <div class="help__item">
+          <div class="img-fixer"><img src="../../assets/icons/pet-food.png" alt="food" class="help__item-img"></div>
+          <h5 class="help__item-title">Pet food</h5>
         </div>
-        <button class="our-friends__button btn" onclick="location.href='../../pages/pets/index.html'">Get to know the rest</button>
-      </section>
-      <section class="help" id="help">
-        <h2 class="help__title">How you can help our shelter</h2>
-        <div class="help__item-list">
-          <div class="help__item">
-            <div class="img-fixer"><img src="../../assets/icons/pet-food.png" alt="food" class="help__item-img"></div>
-            <h5 class="help__item-title">Pet food</h5>
-          </div>
-          <div class="help__item">
-            <div class="img-fixer"><img src="../../assets/icons/transportation.png" alt="transportation" class="help__item-img"></div>
-            <h5 class="help__item-title">Transportation</h5>
-          </div>
-          <div class="help__item">
-            <div class="img-fixer"><img src="../../assets/icons/toys.png" alt="toys" class="help__item-img"></div>
-            <h5 class="help__item-title">Toys</h5>
-          </div>
-          <div class="help__item">
-            <div class="img-fixer"><img src="../../assets/icons/bowls-and-cups.png" alt="bowls-and-cups" class="help__item-img"></div>
-            <h5 class="help__item-title">Bowls and cups</h5>
-          </div>
-          <div class="help__item">
-            <div class="img-fixer"><img src="../../assets/icons/shampoos.png" alt="Shampoo" class="help__item-img"></div>
-            <h5 class="help__item-title">Shampoos</h5>
-          </div>
-          <div class="help__item">
-            <div class="img-fixer"><img src="../../assets/icons/vitamins.png" alt="Vitamins" class="help__item-img"></div>
-            <h5 class="help__item-title">Vitamins</h5>
-          </div>
-          <div class="help__item">
-            <div class="img-fixer"><img src="../../assets/icons/medicines.png" alt="Medicines" class="help__item-img"></div>
-            <h5 class="help__item-title">Medicines</h5>
-          </div>
-          <div class="help__item">
-            <div class="img-fixer"><img src="../../assets/icons/collars-or-leashes.png" alt="collars/leashes" class="help__item-img"></div>
-            <h5 class="help__item-title">Collars / leashes</h5>
-          </div>
-          <div class="help__item">
-            <div class="img-fixer"><img src="../../assets/icons/sleeping-area.png" alt="sleeping-area" class="help__item-img"></div>
-            <h5 class="help__item-title">Sleeping areas</h5>
-          </div>
+        <div class="help__item">
+          <div class="img-fixer"><img src="../../assets/icons/transportation.png" alt="transportation"
+              class="help__item-img"></div>
+          <h5 class="help__item-title">Transportation</h5>
         </div>
-      </section>
-      <section class="in-addition">
-        <div class="in-addition__img-container">
-          <img src="../../assets/images/donation-dog.png" alt="donation" class="in-addition__img">
+        <div class="help__item">
+          <div class="img-fixer"><img src="../../assets/icons/toys.png" alt="toys" class="help__item-img"></div>
+          <h5 class="help__item-title">Toys</h5>
         </div>
-        <div class="in-addition__donation-info">
-          <h2 class="in-addition__title">You can also <br> make a donation</h2>
-          <span class="in-addition__tooltip">Name of the bank / Type of bank account</span>
-          <a href="#!" class="card-link">
-            <div class="in-addition__card-container">
-              <img src="../../assets/icons/credit-card.svg" alt="card" class="in-addition__card-image">
-              <span class="in-addition__card-number">8380 2880 8028 8791 7435</span>
-            </div>
-          </a>
-          <span class="in-addition__additional-info">Legal information and lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus tortor
-            et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
+        <div class="help__item">
+          <div class="img-fixer"><img src="../../assets/icons/bowls-and-cups.png" alt="bowls-and-cups"
+              class="help__item-img"></div>
+          <h5 class="help__item-title">Bowls and cups</h5>
         </div>
-      </section>
-    </main>
+        <div class="help__item">
+          <div class="img-fixer"><img src="../../assets/icons/shampoos.png" alt="Shampoo" class="help__item-img"></div>
+          <h5 class="help__item-title">Shampoos</h5>
+        </div>
+        <div class="help__item">
+          <div class="img-fixer"><img src="../../assets/icons/vitamins.png" alt="Vitamins" class="help__item-img"></div>
+          <h5 class="help__item-title">Vitamins</h5>
+        </div>
+        <div class="help__item">
+          <div class="img-fixer"><img src="../../assets/icons/medicines.png" alt="Medicines" class="help__item-img">
+          </div>
+          <h5 class="help__item-title">Medicines</h5>
+        </div>
+        <div class="help__item">
+          <div class="img-fixer"><img src="../../assets/icons/collars-or-leashes.png" alt="collars/leashes"
+              class="help__item-img"></div>
+          <h5 class="help__item-title">Collars / leashes</h5>
+        </div>
+        <div class="help__item">
+          <div class="img-fixer"><img src="../../assets/icons/sleeping-area.png" alt="sleeping-area"
+              class="help__item-img"></div>
+          <h5 class="help__item-title">Sleeping areas</h5>
+        </div>
+      </div>
+    </section>
+    <div class="in-addition-fixer">
+      <div class="wrapper">
+        <section class="in-addition">
+          <div class="in-addition__img-container">
+            <img src="../../assets/images/donation-dog.png" alt="donation" class="in-addition__img">
+          </div>
+          <div class="in-addition__donation-info">
+            <h2 class="in-addition__title">You can also <br> make a donation</h2>
+            <span class="in-addition__tooltip">Name of the bank / Type of bank account</span>
+            <a href="#!" class="card-link">
+              <div class="in-addition__card-container">
+                <img src="../../assets/icons/credit-card.svg" alt="card" class="in-addition__card-image">
+                <span class="in-addition__card-number">8380 2880 8028 8791 7435</span>
+              </div>
+            </a>
+            <span class="in-addition__additional-info">Legal information and lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus
+              tortor
+              et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <div class="footer-fixer">
+  <div class="wrapper">
     <footer class="footer" id="contacts">
       <div class="footer__contact-info">
         <h3 class="footer__contact-title">For questions and suggestions</h3>
@@ -200,6 +224,7 @@
       </div>
       <img src="../../assets/images/footer-puppy.png" alt="puppy" class="footer__dog-img">
     </footer>
+  </div>
   </div>
   <script src="script.js"></script>
 </body>

@@ -88,12 +88,18 @@ img {
 
 /* header */
 
+.header-fixer {
+  background-color: #FFFFFF;
+  height: 120px;
+  position: fixed;
+  width: 100%;
+}
+
 .header {
   padding-top: 30px;
   width: 100%;
   max-width: 1280px;
   padding-bottom: 28px;
-  background-color: #FFFFFF;
   position: fixed;
 }
 
@@ -170,8 +176,11 @@ img {
 
 /* our friends */
 
-.our-friends {
+.our-friends-fixer {
   background: #F6F6F6;
+}
+
+.our-friends {
   padding-top: 119px;
   padding-bottom: 118px;
 }
@@ -304,11 +313,15 @@ button span {
 
 /* footer */
 
+.footer-fixer {
+  background-image: url("../../assets/images/footer-gradient-background.png");
+  background-size: cover;
+}
+
 .footer {
   display: flex;
   gap: 155px;
   align-items: center;
-  background-image: url("../../assets/images/footer-gradient-background.png");
   height: 350px;
   margin-top: -18px
 }
