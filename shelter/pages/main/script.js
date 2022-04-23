@@ -1,6 +1,5 @@
 import petCards from '../data/pets.json' assert { type: 'json'};
 
-const headerListItems = document.querySelectorAll('.header__item');
 const burgerIcon = document.querySelector('.hamburger-lines');
 const popupMenu = document.querySelector('.pop-up-menu');
 const header = document.querySelector('.header');
@@ -9,13 +8,17 @@ const popupItems = document.querySelectorAll('.popup__item');
 const arrowRight = document.querySelector('.arrow-right');
 const arrowLeft = document.querySelector(".arrow-left");
 const ourFriendsItem = document.querySelectorAll('.our-friends__item');
+const modalWindow = document.querySelector('.module-window')
 
 
 // !!burger 
 
-const emptySpaceClose = e => e.target.classList.contains('black-bg') ? burgerToggle() : null;
 let burgerState = false;
 let bodyListener = null;
+
+const emptySpaceClose = (e) =>{
+  e.target.classList.contains('black-bg') && burgerState ? burgerToggle() : null;
+} 
 
 const burgerToggle = () => {
   burgerState = !burgerState;
@@ -70,6 +73,7 @@ const setCards = (count, dir) => {
   if (dir === -1) {
     currentInd = (shuffle.length + currentInd - count * 2) % shuffle.length
   }
+
   for (let i = 0; i < count; i++) {
     const item = shuffle[currentInd];
     currentInd += 1;
@@ -114,25 +118,128 @@ window.addEventListener('resize', () => {
 
 setCards(countOfShownCards, 1);
 
+const setToRight = () => {
+  for (let i = 0; i < ourFriendsItem.length; i++) {
+    ourFriendsItem[i].style.transition = "none"
+    ourFriendsItem[i].classList.remove('carousel-swap');
+    ourFriendsItem[i].classList.add('turn-left');
+    setTimeout(() => {
+      ourFriendsItem[i].style.transition = "right 0.2s ease-out"
+      ourFriendsItem[i].classList.remove('turn-left');
+    }, 10)
+  }
+}
+
+const setToLeft = () => {
+  for (let i = 0; i < ourFriendsItem.length; i++) {
+    ourFriendsItem[i].style.transition = "none"
+    ourFriendsItem[i].classList.remove('turn-left');
+    ourFriendsItem[i].classList.add('carousel-swap');
+    setTimeout(() => {
+      ourFriendsItem[i].style.transition = "right 0.2s ease-out"
+      ourFriendsItem[i].classList.remove('carousel-swap');
+    }, 10)
+  }
+}
+
 arrowRight.addEventListener('click', () => {
-  countOfShownCards = cardsToShow(window.innerWidth);
-  setCards(countOfShownCards, 1);
+  setTimeout(() => {
+    countOfShownCards = cardsToShow(window.innerWidth);
+    setCards(countOfShownCards, 1);
+  }, 200)
+
+  setTimeout(() => {
+    setToLeft();
+  }, 210)
+
+  for (let i = 0; i < ourFriendsItem.length; i++) {
+    setTimeout(() => {
+      ourFriendsItem[i].classList.add('turn-left')
+    }, 0)
+  }
 })
 
 arrowLeft.addEventListener('click', () => {
-  countOfShownCards = cardsToShow(window.innerWidth);
-  setCards(countOfShownCards, -1);
+  setTimeout(() => {
+    countOfShownCards = cardsToShow(window.innerWidth);
+    setCards(countOfShownCards, -1);
+  }, 200)
+
+  setTimeout(() => {
+    setToRight();
+  }, 210)
+
+  for (let i = 0; i < ourFriendsItem.length; i++) {
+    setTimeout(() => {
+      ourFriendsItem[i].classList.add('carousel-swap')
+    }, 0)
+  }
 })
 
+
+
+
+
 // popup show up
+
+const searchObject = petName => {
+  for (let i = 0; i < petCards.length; i++) {
+    if (petCards[i]["name"] === petName) {
+      return petCards[i]
+    }
+  }
+}
 
 ourFriendsItem.forEach(x => {
   x.addEventListener('click', (e) => {
     const target = e.target;
-    if (target.classList.contains('our-friends__item-button')) {
+    let name = target
+    console.log(name.childNodes[3])
 
+    if (target.classList.contains('our-friends__item')) {
+      name = target.childNodes[3].innerHTML
+    } else {
+      name = target.parentNode.childNodes[3].innerHTML
     }
+
+      const rightObject = searchObject(name);
+      modalWindow.innerHTML =
+        `
+      <div class="inner">
+      <img src="${rightObject["img"]}" alt="${rightObject["name"]}">
+      <div class="module-text-block">
+        <h2 class="module-title">${rightObject["name"]}</h2>
+        <h3 class="module-subtitle">${rightObject["type"]} - ${rightObject["breed"]}</h3>
+        <p class="module-description">${rightObject["description"]}</p>
+        <ul class="module-chars">
+          <li class="module-char">Age: <span>${rightObject["age"]}</span></li>
+          <li class="module-char">Inoculations: <span>${rightObject["inoculations"]}</span></li>
+          <li class="module-char">Diseases: <span>${rightObject["diseases"]}</span></li>
+          <li class="module-char">Parasites: <span>${rightObject["parasites"]}</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="close-btn">
+      <img class="close" src="../../assets/icons/module-close.png" alt="close">
+    </div>
+      `
+      modalWindow.classList.toggle('fixed-toggle')
+      body.classList.toggle('scroll-disable');
+      body.classList.toggle('black-bg');
   })
+})
+
+document.addEventListener('click', (e) => {
+  if (body.classList.contains('black-bg')) {
+    if (e.target.classList.contains('close') 
+    || e.target.classList.contains('black-bg') 
+    || e.target.classList.contains('module-window')
+    || e.target.classList.contains('close-btn')) {
+      modalWindow.classList.toggle('fixed-toggle')
+      body.classList.toggle('scroll-disable');
+      body.classList.toggle('black-bg');
+    }
+  }
 })
 
 
