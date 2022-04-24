@@ -53,7 +53,6 @@ ourFriendsItem.forEach(x => {
   x.addEventListener('click', (e) => {
     const target = e.target;
     let name = target
-    console.log(name.childNodes[3])
 
     if (target.classList.contains('our-friends__item')) {
       name = target.childNodes[3].innerHTML
@@ -122,8 +121,9 @@ const getPages = function (array, numOfPages) {
   for (let i = 0; i < numOfPages; i++) {
     pages.push(addPage(pages[i - 1] || [], items, itemsPerPage));
   }
-  if (items.length)
+  if (items.length) {
     return getPages(array, numOfPages);
+  } 
   return pages;
 
   function addPage(prevPage, items, itemsPerPage) {
@@ -132,8 +132,9 @@ const getPages = function (array, numOfPages) {
       const item = items[i];
       if (page.indexOf(item) === -1 && prevPage[page.length] !== item) {
         page.push(...items.splice(i, 1))
-        if (page.length === itemsPerPage)
+        if (page.length === itemsPerPage) {
           break;
+        }
         i = -1;
       }
     }
@@ -157,18 +158,18 @@ const btnPrev = document.querySelector('.btn-prev');
 const currentPageNum = document.querySelector('.current-page span');
 const ourFriendItems = document.querySelectorAll('.our-friends__item');
 
-const arrOfIndexes = petCards.map((_, i) => i);
+const arrOfIndexes = shuffleArray(petCards.map((_, i) => i));
 
 const setContentToCards = (arr) => {
   for (let i = 0; i < arr.length; i++) {
-    ourFriendItems[i].innerHTML = 
-    `
+    ourFriendItems[i].innerHTML =
+      `
     <img src="${petCards[arr[i]]["img"]}" alt="${petCards[arr[i]]["name"]}" class="our-friends__item-img">
     <h4 class="our-friends__item-title">${petCards[arr[i]]["name"]}</h4>
     <button class="our-friends__item-btn btn2">Learn more</button>
     `
   }
-} 
+}
 
 const getCountOfPages = () => {
   const curWidth = window.innerWidth;
@@ -267,8 +268,6 @@ btnToFirstPage.addEventListener('click', () => {
   limitOfPagesChecker(currentPage);
 })
 
-console.log(arrayOfPages)
-
 window.addEventListener('resize', () => {
   const changeCount = getCountOfPages()
   if (changeCount !== maximumSize) {
@@ -277,7 +276,6 @@ window.addEventListener('resize', () => {
     arrayOfPages = getPages(arrOfIndexes, maximumSize);
     setContentToCards(arrayOfPages[0])
     currentPageNum.innerHTML = currentPage;
-    console.log(arrayOfPages)
     if (!btnPrev.classList.contains('inactive')) {
       btnPrev.classList.add('inactive')
       btnToFirstPage.classList.add('inactive')

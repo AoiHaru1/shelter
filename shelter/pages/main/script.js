@@ -194,7 +194,6 @@ ourFriendsItem.forEach(x => {
   x.addEventListener('click', (e) => {
     const target = e.target;
     let name = target
-    console.log(name.childNodes[3])
 
     if (target.classList.contains('our-friends__item')) {
       name = target.childNodes[3].innerHTML
