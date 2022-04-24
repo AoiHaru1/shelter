@@ -11,6 +11,8 @@
 </head>
 
 <body class="body">
+  <div class="module-window">
+  </div>
   <div class="pop-up-menu">
     <div class="popup__title-block">
       <a href="#!">
@@ -20,7 +22,7 @@
     </div>
     <ul class="pop-up__list">
       <li class="popup__item"><a href="../../pages/main/index.html">About the shelter</a></li>
-      <li class="popup__item active margin-fix"><a href="#!">Our pets</a></li>
+      <li class="popup__item active margin-fix"><a href="#main">Our pets</a></li>
       <li class="popup__item"><a href="../../pages/main/index.html#help">Help the shelter</a></li>
       <li class="popup__item"><a href="#contacts">Contacts</a></li>
   </div>
@@ -38,7 +40,7 @@
           <nav class="navigation">
             <ul class="header__item-list">
               <li class="header__item"><a href="../../pages/main/index.html">About the shelter</a></li>
-              <li class="header__item active"><a href="">Our pets</a></li>
+              <li class="header__item active"><a href="#main">Our pets</a></li>
               <li class="header__item"><a href="../../pages/main/index.html#help">Help the shelter</a></li>
               <li class="header__item"><a href="#contacts">Contacts</a></li>
             </ul>
@@ -52,7 +54,7 @@
       </header>
     </div>
   </div>
-  <main class="main">
+  <main class="main" id="main">
     <div class="our-friends-fixer">
       <div class="wrapper">
         <section class="our-friends" id="friends">
@@ -100,11 +102,11 @@
             </div>
           </div>
           <div class="our-friends__buttons-container">
-            <button class="btn-prev inactive" disabled><span>&lt;&lt;</span></button>
-            <button class="btn-prev inactive" disabled><span>&lt;</span></button>
+            <button class="btn-prevdbl inactive"><span>&lt;&lt;</span></button>
+            <button class="btn-prev inactive"><span>&lt;</span></button>
             <div class="current-page"><span>1</span></div>
             <button class="btn-next"><span>></span></button>
-            <button class="btn-next"><span>>></span></button>
+            <button class="btn-nextdbl"><span>>></span></button>
           </div>
         </section>
       </div>
@@ -146,7 +148,7 @@
       </footer>
     </div>
   </div>
-  <script src="./script.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>
 
 </html>

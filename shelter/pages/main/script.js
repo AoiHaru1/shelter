@@ -121,11 +121,11 @@ setCards(countOfShownCards, 1);
 const setToRight = () => {
   for (let i = 0; i < ourFriendsItem.length; i++) {
     ourFriendsItem[i].style.transition = "none"
-    ourFriendsItem[i].classList.remove('carousel-swap');
-    ourFriendsItem[i].classList.add('turn-left');
+    ourFriendsItem[i].classList.remove('turn-left');
+    ourFriendsItem[i].classList.add('carousel-swap');
     setTimeout(() => {
       ourFriendsItem[i].style.transition = "right 0.2s ease-out"
-      ourFriendsItem[i].classList.remove('turn-left');
+      ourFriendsItem[i].classList.remove('carousel-swap');
     }, 10)
   }
 }
@@ -133,11 +133,11 @@ const setToRight = () => {
 const setToLeft = () => {
   for (let i = 0; i < ourFriendsItem.length; i++) {
     ourFriendsItem[i].style.transition = "none"
-    ourFriendsItem[i].classList.remove('turn-left');
-    ourFriendsItem[i].classList.add('carousel-swap');
+    ourFriendsItem[i].classList.remove('carousel-swap');
+    ourFriendsItem[i].classList.add('turn-left');
     setTimeout(() => {
       ourFriendsItem[i].style.transition = "right 0.2s ease-out"
-      ourFriendsItem[i].classList.remove('carousel-swap');
+      ourFriendsItem[i].classList.remove('turn-left'); 
     }, 10)
   }
 }
@@ -154,7 +154,7 @@ arrowRight.addEventListener('click', () => {
 
   for (let i = 0; i < ourFriendsItem.length; i++) {
     setTimeout(() => {
-      ourFriendsItem[i].classList.add('turn-left')
+      ourFriendsItem[i].classList.add('carousel-swap')
     }, 0)
   }
 })
@@ -171,7 +171,7 @@ arrowLeft.addEventListener('click', () => {
 
   for (let i = 0; i < ourFriendsItem.length; i++) {
     setTimeout(() => {
-      ourFriendsItem[i].classList.add('carousel-swap')
+      ourFriendsItem[i].classList.add('turn-left')
     }, 0)
   }
 })
