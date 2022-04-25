@@ -127,6 +127,10 @@ body.black-bg::after {
   display: flex;
   margin-top: 52px;
   gap: 30px;
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
 }
 
 .module-text-block {
@@ -212,8 +216,8 @@ body.black-bg::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -554px;
-  left: 889px;
+  top: -28px;
+  left: 915px;
   cursor: pointer;
 }
 
@@ -1011,8 +1015,8 @@ body.black-bg::after {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: -402px;
-    left: 623px;
+    top: -30px;
+    left: 653px;
     cursor: pointer;
   }
 
@@ -1333,8 +1337,8 @@ body.black-bg::after {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: -445px;
-    left: 219px;
+    top: -55px;
+    left: 239px;
     cursor: pointer;
   }
 
