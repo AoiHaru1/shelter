@@ -64,20 +64,19 @@ function shufflePetsOrder(arr) {
 }
 
 let shuffle = shufflePetsOrder(petCards);
+let buffer = [shuffle[0], shuffle[1], shuffle[2]]
+
+const getCards = () => shuffle.filter(x => !buffer.includes(x)) 
 
 // set imgs
 
-let currentInd = 0;
 
-const setCards = (count, dir) => {
-  if (dir === -1) {
-    currentInd = (shuffle.length + currentInd - count * 2) % shuffle.length
-  }
-
+const setCards = (count) => {
+  const newList = getCards()
+  buffer = [];
   for (let i = 0; i < count; i++) {
-    const item = shuffle[currentInd];
-    currentInd += 1;
-    if (currentInd > petCards.length - 1) currentInd = 0;
+    const item = newList[i];
+    buffer[i] = item
     const itemContent =
       `
     <img src="${item["img"]}" alt="${item["name"]}" class="our-friends__item-img">
@@ -86,6 +85,7 @@ const setCards = (count, dir) => {
     `
     ourFriendsItem[i].innerHTML = itemContent
   }
+  shuffle = shufflePetsOrder(petCards);
 }
 
 
@@ -107,16 +107,13 @@ window.addEventListener('resize', () => {
     for (let i = 0; i < shuffle.length; i++) {
       if (startPoint === shuffle[i].name) {
         countOfShownCards = cardsToShow(window.innerWidth);
-        currentInd = i;
-        setCards(3);
-        currentInd = i;
         setCards(countOfShownCards);
       }
     }
   }
 })
 
-setCards(countOfShownCards, 1);
+setCards(countOfShownCards);
 
 const setToRight = () => {
   for (let i = 0; i < ourFriendsItem.length; i++) {
@@ -145,7 +142,7 @@ const setToLeft = () => {
 arrowRight.addEventListener('click', () => {
   setTimeout(() => {
     countOfShownCards = cardsToShow(window.innerWidth);
-    setCards(countOfShownCards, 1);
+      setCards(countOfShownCards);
   }, 200)
 
   setTimeout(() => {
@@ -162,7 +159,7 @@ arrowRight.addEventListener('click', () => {
 arrowLeft.addEventListener('click', () => {
   setTimeout(() => {
     countOfShownCards = cardsToShow(window.innerWidth);
-    setCards(countOfShownCards, -1);
+      setCards(countOfShownCards);
   }, 200)
 
   setTimeout(() => {
