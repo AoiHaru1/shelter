@@ -83,11 +83,9 @@ const setCards = (count) => {
         let newShuffle = shufflePetsOrder(petCards);
         while (first === newShuffle[0] || first === newShuffle[1] || second === newShuffle[0] || second === newShuffle[1]) {
           newShuffle = shufflePetsOrder(petCards);
-          console.log('kek')
         }
         currentIndex
         shuffle = newShuffle
-        console.log(shuffle)
       }
       const itemContent =
         `
