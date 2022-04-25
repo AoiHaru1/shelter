@@ -16,9 +16,9 @@ const modalWindow = document.querySelector('.module-window')
 let burgerState = false;
 let bodyListener = null;
 
-const emptySpaceClose = (e) =>{
+const emptySpaceClose = (e) => {
   e.target.classList.contains('black-bg') && burgerState ? burgerToggle() : null;
-} 
+}
 
 const burgerToggle = () => {
   burgerState = !burgerState;
@@ -66,26 +66,53 @@ function shufflePetsOrder(arr) {
 let shuffle = shufflePetsOrder(petCards);
 let buffer = [shuffle[0], shuffle[1], shuffle[2]]
 
-const getCards = () => shuffle.filter(x => !buffer.includes(x)) 
+const getCards = () => shuffle.filter(x => !buffer.includes(x))
 
 // set imgs
-
+let currentIndex = 0;
 
 const setCards = (count) => {
-  const newList = getCards()
-  buffer = [];
-  for (let i = 0; i < count; i++) {
-    const item = newList[i];
-    buffer[i] = item
-    const itemContent =
+  if (cardsToShow(window.innerWidth) < 3) {
+    for (let i = 0; i < count; i++) {
+      const item = shuffle[currentIndex];
+      currentIndex++
+      if (currentIndex === 8) {
+        currentIndex = 0;
+        const first = shuffle[shuffle.length - 1]
+        const second = shuffle[shuffle.length - 2]
+        let newShuffle = shufflePetsOrder(petCards);
+        while (first === newShuffle[0] || first === newShuffle[1] || second === newShuffle[0] || second === newShuffle[1]) {
+          newShuffle = shufflePetsOrder(petCards);
+          console.log('kek')
+        }
+        currentIndex
+        shuffle = newShuffle
+        console.log(shuffle)
+      }
+      const itemContent =
+        `
+      <img src="${item["img"]}" alt="${item["name"]}" class="our-friends__item-img">
+      <h4 class="our-friends__item-title">${item["name"]}</h4>
+      <button class="our-friends__item-button btn2">Learn more</button>
       `
+      ourFriendsItem[i].innerHTML = itemContent
+    }
+  } else {
+    const newList = getCards()
+    buffer = [];
+    for (let i = 0; i < count; i++) {
+      const item = newList[i];
+      buffer[i] = item
+      const itemContent =
+        `
     <img src="${item["img"]}" alt="${item["name"]}" class="our-friends__item-img">
     <h4 class="our-friends__item-title">${item["name"]}</h4>
     <button class="our-friends__item-button btn2">Learn more</button>
     `
-    ourFriendsItem[i].innerHTML = itemContent
+      ourFriendsItem[i].innerHTML = itemContent
+    }
+    shuffle = shufflePetsOrder(petCards);
   }
-  shuffle = shufflePetsOrder(petCards);
 }
 
 
@@ -134,7 +161,7 @@ const setToLeft = () => {
     ourFriendsItem[i].classList.add('turn-left');
     setTimeout(() => {
       ourFriendsItem[i].style.transition = "right 0.2s ease-out"
-      ourFriendsItem[i].classList.remove('turn-left'); 
+      ourFriendsItem[i].classList.remove('turn-left');
     }, 10)
   }
 }
@@ -142,7 +169,7 @@ const setToLeft = () => {
 arrowRight.addEventListener('click', () => {
   setTimeout(() => {
     countOfShownCards = cardsToShow(window.innerWidth);
-      setCards(countOfShownCards);
+    setCards(countOfShownCards);
   }, 200)
 
   setTimeout(() => {
@@ -159,7 +186,7 @@ arrowRight.addEventListener('click', () => {
 arrowLeft.addEventListener('click', () => {
   setTimeout(() => {
     countOfShownCards = cardsToShow(window.innerWidth);
-      setCards(countOfShownCards);
+    setCards(countOfShownCards);
   }, 200)
 
   setTimeout(() => {
@@ -198,9 +225,9 @@ ourFriendsItem.forEach(x => {
       name = target.parentNode.childNodes[3].innerHTML
     }
 
-      const rightObject = searchObject(name);
-      modalWindow.innerHTML =
-        `
+    const rightObject = searchObject(name);
+    modalWindow.innerHTML =
+      `
       <div class="inner">
       <img src="${rightObject["img"]}" alt="${rightObject["name"]}">
       <div class="module-text-block">
@@ -219,18 +246,18 @@ ourFriendsItem.forEach(x => {
       <img class="close" src="../../assets/icons/module-close.png" alt="close">
     </div>
       `
-      modalWindow.classList.toggle('fixed-toggle')
-      body.classList.toggle('scroll-disable');
-      body.classList.toggle('black-bg');
+    modalWindow.classList.toggle('fixed-toggle')
+    body.classList.toggle('scroll-disable');
+    body.classList.toggle('black-bg');
   })
 })
 
 document.addEventListener('click', (e) => {
   if (body.classList.contains('black-bg')) {
-    if (e.target.classList.contains('close') 
-    || e.target.classList.contains('black-bg') 
-    || e.target.classList.contains('module-window')
-    || e.target.classList.contains('close-btn')) {
+    if (e.target.classList.contains('close')
+      || e.target.classList.contains('black-bg')
+      || e.target.classList.contains('module-window')
+      || e.target.classList.contains('close-btn')) {
       modalWindow.classList.toggle('fixed-toggle')
       body.classList.toggle('scroll-disable');
       body.classList.toggle('black-bg');
