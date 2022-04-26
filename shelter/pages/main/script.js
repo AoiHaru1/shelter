@@ -172,7 +172,7 @@ arrowRight.addEventListener('click', () => {
 
   setTimeout(() => {
     setToLeft();
-  }, 300)
+  }, 350)
 
   for (let i = 0; i < ourFriendsItem.length; i++) {
     setTimeout(() => {
@@ -189,7 +189,7 @@ arrowLeft.addEventListener('click', () => {
 
   setTimeout(() => {
     setToRight();
-  }, 300)
+  }, 350)
 
   for (let i = 0; i < ourFriendsItem.length; i++) {
     setTimeout(() => {
