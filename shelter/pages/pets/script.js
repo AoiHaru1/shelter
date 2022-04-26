@@ -1,4 +1,4 @@
-import petCards from '../data/pets.json' assert { type: 'json'};
+import petCards from '../data/pets.js'
 
 const burgerIcon = document.querySelector('.hamburger-lines');
 const popupMenu = document.querySelector('.pop-up-menu');
