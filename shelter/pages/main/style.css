@@ -318,7 +318,7 @@ body.black-bg::after {
 
 /* not-only */
 .not-only-fixer {
-  background-image: url("../../assets/images/start-screen-gradient-background.png");
+  background: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
   background-size: cover;
 }
 
@@ -1031,7 +1031,7 @@ body.black-bg::after {
   /* not-only*/
 
   .not-only-fixer {
-    background-image: url("../../assets/images/start-screen-gradient-background\ \(1\).png");
+    background: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
   }
 
   .not-only {
