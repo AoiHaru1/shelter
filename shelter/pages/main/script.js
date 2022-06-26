@@ -1,231 +1,232 @@
 import petCards from '../data/pets.js'
-console.log(petCards)
-const burgerIcon = document.querySelector('.hamburger-lines');
-const popupMenu = document.querySelector('.pop-up-menu');
-const header = document.querySelector('.header');
-const body = document.querySelector('.body');
-const popupItems = document.querySelectorAll('.popup__item');
-const arrowRight = document.querySelector('.arrow-right');
-const arrowLeft = document.querySelector(".arrow-left");
-const ourFriendsItem = document.querySelectorAll('.our-friends__item');
-const modalWindow = document.querySelector('.module-window')
+
+document.addEventListener('DOMContentLoaded', () => {
+  const burgerIcon = document.querySelector('.hamburger-lines');
+  const popupMenu = document.querySelector('.pop-up-menu');
+  const header = document.querySelector('.header');
+  const body = document.querySelector('.body');
+  const popupItems = document.querySelectorAll('.popup__item');
+  const arrowRight = document.querySelector('.arrow-right');
+  const arrowLeft = document.querySelector(".arrow-left");
+  const ourFriendsItem = document.querySelectorAll('.our-friends__item');
+  const modalWindow = document.querySelector('.module-window')
 
 
-// !!burger 
+  // !!burger 
 
-let burgerState = false;
-let bodyListener = null;
+  let burgerState = false;
+  let bodyListener = null;
 
-const emptySpaceClose = (e) => {
-  e.target.classList.contains('black-bg') && burgerState ? burgerToggle() : null;
-}
-
-const burgerToggle = () => {
-  burgerState = !burgerState;
-  burgerIcon.classList.toggle('burger-flip');
-  header.classList.toggle('header-pets-change');
-  popupMenu.classList.toggle('popup-right');
-  body.classList.toggle('scroll-disable');
-  body.classList.toggle('black-bg');
-
-  if (burgerState) {
-    body.addEventListener('click', emptySpaceClose);
-  } else {
-    body.removeEventListener('click', emptySpaceClose);
+  const emptySpaceClose = (e) => {
+    e.target.classList.contains('black-bg') && burgerState ? burgerToggle() : null;
   }
-}
 
-burgerIcon.addEventListener('click', burgerToggle);
+  const burgerToggle = () => {
+    burgerState = !burgerState;
+    burgerIcon.classList.toggle('burger-flip');
+    header.classList.toggle('header-pets-change');
+    popupMenu.classList.toggle('popup-right');
+    body.classList.toggle('scroll-disable');
+    body.classList.toggle('black-bg');
 
-popupItems.forEach(x => x.addEventListener('click', burgerToggle));
-
-
-
-// !!carousel
-
-// shows the number of how many cards we add on the page
-
-const cardsToShow = (wid) => {
-  return wid >= 1280 ? 3 : wid >= 768 ? 2 : 1
-}
-
-let width = window.innerWidth;
-let countOfShownCards = cardsToShow(width);
-
-// function that randomize the order of pets card
-
-function shufflePetsOrder(arr) {
-  const array = [...arr];
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    if (burgerState) {
+      body.addEventListener('click', emptySpaceClose);
+    } else {
+      body.removeEventListener('click', emptySpaceClose);
+    }
   }
-  return array
-}
 
-let shuffle = shufflePetsOrder(petCards);
-let buffer = [shuffle[0], shuffle[1], shuffle[2]]
+  burgerIcon.addEventListener('click', burgerToggle);
 
-const getCards = () => shuffle.filter(x => !buffer.includes(x))
+  popupItems.forEach(x => x.addEventListener('click', burgerToggle));
 
-// set imgs
-let currentIndex = 0;
 
-const setCards = (count) => {
-  if (cardsToShow(window.innerWidth) < 3) {
-    for (let i = 0; i < count; i++) {
-      const item = shuffle[currentIndex];
-      currentIndex++
-      if (currentIndex === 8) {
-        currentIndex = 0;
-        const first = shuffle[shuffle.length - 1]
-        const second = shuffle[shuffle.length - 2]
-        let newShuffle = shufflePetsOrder(petCards);
-        while (first === newShuffle[0] || first === newShuffle[1] || second === newShuffle[0] || second === newShuffle[1]) {
-          newShuffle = shufflePetsOrder(petCards);
+
+  // !!carousel
+
+  // shows the number of how many cards we add on the page
+
+  const cardsToShow = (wid) => {
+    return wid >= 1280 ? 3 : wid >= 768 ? 2 : 1
+  }
+
+  let width = window.innerWidth;
+  let countOfShownCards = cardsToShow(width);
+
+  // function that randomize the order of pets card
+
+  function shufflePetsOrder(arr) {
+    const array = [...arr];
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array
+  }
+
+  let shuffle = shufflePetsOrder(petCards);
+  let buffer = [shuffle[0], shuffle[1], shuffle[2]]
+
+  const getCards = () => shuffle.filter(x => !buffer.includes(x))
+
+  // set imgs
+  let currentIndex = 0;
+
+  const setCards = (count) => {
+    if (cardsToShow(window.innerWidth) < 3) {
+      for (let i = 0; i < count; i++) {
+        const item = shuffle[currentIndex];
+        currentIndex++
+        if (currentIndex === 8) {
+          currentIndex = 0;
+          const first = shuffle[shuffle.length - 1]
+          const second = shuffle[shuffle.length - 2]
+          let newShuffle = shufflePetsOrder(petCards);
+          while (first === newShuffle[0] || first === newShuffle[1] || second === newShuffle[0] || second === newShuffle[1]) {
+            newShuffle = shufflePetsOrder(petCards);
+          }
+          currentIndex
+          shuffle = newShuffle
         }
-        currentIndex
-        shuffle = newShuffle
-      }
-      const itemContent =
-        `
+        const itemContent =
+          `
       <img src="${item["img"]}" alt="${item["name"]}" class="our-friends__item-img">
       <h4 class="our-friends__item-title">${item["name"]}</h4>
       <button class="our-friends__item-button btn2">Learn more</button>
       `
-      ourFriendsItem[i].innerHTML = itemContent
-    }
-  } else {
-    const newList = getCards()
-    buffer = [];
-    for (let i = 0; i < count; i++) {
-      const item = newList[i];
-      buffer[i] = item
-      const itemContent =
-        `
+        ourFriendsItem[i].innerHTML = itemContent
+      }
+    } else {
+      const newList = getCards()
+      buffer = [];
+      for (let i = 0; i < count; i++) {
+        const item = newList[i];
+        buffer[i] = item
+        const itemContent =
+          `
     <img src="${item["img"]}" alt="${item["name"]}" class="our-friends__item-img">
     <h4 class="our-friends__item-title">${item["name"]}</h4>
     <button class="our-friends__item-button btn2">Learn more</button>
     `
-      ourFriendsItem[i].innerHTML = itemContent
+        ourFriendsItem[i].innerHTML = itemContent
+      }
+      shuffle = shufflePetsOrder(petCards);
     }
-    shuffle = shufflePetsOrder(petCards);
   }
-}
 
 
 
-const sameImageCheckerOnResize = () => {
-  const a = ourFriendsItem[0].childNodes[3].innerHTML;
-  const y = ourFriendsItem[1].childNodes[3].innerHTML;
-  const x = ourFriendsItem[2].childNodes[3].innerHTML;
+  const sameImageCheckerOnResize = () => {
+    const a = ourFriendsItem[0].childNodes[3].innerHTML;
+    const y = ourFriendsItem[1].childNodes[3].innerHTML;
+    const x = ourFriendsItem[2].childNodes[3].innerHTML;
 
-  const changedWidth = cardsToShow(window.innerWidth)
+    const changedWidth = cardsToShow(window.innerWidth)
 
-  return a === y || a === x || x === y || changedWidth !== countOfShownCards;
-}
+    return a === y || a === x || x === y || changedWidth !== countOfShownCards;
+  }
 
 
-window.addEventListener('resize', () => {
-  if (sameImageCheckerOnResize()) {
-    const startPoint = ourFriendsItem[0].childNodes[3].innerHTML
-    for (let i = 0; i < shuffle.length; i++) {
-      if (startPoint === shuffle[i].name) {
-        countOfShownCards = cardsToShow(window.innerWidth);
-        setCards(countOfShownCards);
+  window.addEventListener('resize', () => {
+    if (sameImageCheckerOnResize()) {
+      const startPoint = ourFriendsItem[0].childNodes[3].innerHTML
+      for (let i = 0; i < shuffle.length; i++) {
+        if (startPoint === shuffle[i].name) {
+          countOfShownCards = cardsToShow(window.innerWidth);
+          setCards(countOfShownCards);
+        }
+      }
+    }
+  })
+
+  setCards(countOfShownCards);
+
+  const setToRight = () => {
+    for (let i = 0; i < ourFriendsItem.length; i++) {
+      ourFriendsItem[i].style.transition = "none"
+      ourFriendsItem[i].classList.remove('turn-left');
+      ourFriendsItem[i].classList.add('carousel-swap');
+      setTimeout(() => {
+        ourFriendsItem[i].style.transition = "right 0.2s ease-out"
+        ourFriendsItem[i].classList.remove('carousel-swap');
+      }, 10)
+    }
+  }
+
+  const setToLeft = () => {
+    for (let i = 0; i < ourFriendsItem.length; i++) {
+      ourFriendsItem[i].style.transition = "none"
+      ourFriendsItem[i].classList.remove('carousel-swap');
+      ourFriendsItem[i].classList.add('turn-left');
+      setTimeout(() => {
+        ourFriendsItem[i].style.transition = "right 0.2s ease-out"
+        ourFriendsItem[i].classList.remove('turn-left');
+      }, 10)
+    }
+  }
+
+  arrowRight.addEventListener('click', () => {
+    setTimeout(() => {
+      countOfShownCards = cardsToShow(window.innerWidth);
+      setCards(countOfShownCards);
+    }, 200)
+
+    setTimeout(() => {
+      setToLeft();
+    }, 350)
+
+    for (let i = 0; i < ourFriendsItem.length; i++) {
+      setTimeout(() => {
+        ourFriendsItem[i].classList.add('carousel-swap')
+      }, 0)
+    }
+  })
+
+  arrowLeft.addEventListener('click', () => {
+    setTimeout(() => {
+      countOfShownCards = cardsToShow(window.innerWidth);
+      setCards(countOfShownCards);
+    }, 200)
+
+    setTimeout(() => {
+      setToRight();
+    }, 350)
+
+    for (let i = 0; i < ourFriendsItem.length; i++) {
+      setTimeout(() => {
+        ourFriendsItem[i].classList.add('turn-left')
+      }, 0)
+    }
+  })
+
+
+
+
+
+  // popup show up
+
+  const searchObject = petName => {
+    for (let i = 0; i < petCards.length; i++) {
+      if (petCards[i]["name"] === petName) {
+        return petCards[i]
       }
     }
   }
-})
 
-setCards(countOfShownCards);
+  ourFriendsItem.forEach(x => {
+    x.addEventListener('click', (e) => {
+      const target = e.target;
+      let name = target
 
-const setToRight = () => {
-  for (let i = 0; i < ourFriendsItem.length; i++) {
-    ourFriendsItem[i].style.transition = "none"
-    ourFriendsItem[i].classList.remove('turn-left');
-    ourFriendsItem[i].classList.add('carousel-swap');
-    setTimeout(() => {
-      ourFriendsItem[i].style.transition = "right 0.2s ease-out"
-      ourFriendsItem[i].classList.remove('carousel-swap');
-    }, 10)
-  }
-}
+      if (target.classList.contains('our-friends__item')) {
+        name = target.childNodes[3].innerHTML
+      } else {
+        name = target.parentNode.childNodes[3].innerHTML
+      }
 
-const setToLeft = () => {
-  for (let i = 0; i < ourFriendsItem.length; i++) {
-    ourFriendsItem[i].style.transition = "none"
-    ourFriendsItem[i].classList.remove('carousel-swap');
-    ourFriendsItem[i].classList.add('turn-left');
-    setTimeout(() => {
-      ourFriendsItem[i].style.transition = "right 0.2s ease-out"
-      ourFriendsItem[i].classList.remove('turn-left');
-    }, 10)
-  }
-}
-
-arrowRight.addEventListener('click', () => {
-  setTimeout(() => {
-    countOfShownCards = cardsToShow(window.innerWidth);
-    setCards(countOfShownCards);
-  }, 200)
-
-  setTimeout(() => {
-    setToLeft();
-  }, 350)
-
-  for (let i = 0; i < ourFriendsItem.length; i++) {
-    setTimeout(() => {
-      ourFriendsItem[i].classList.add('carousel-swap')
-    }, 0)
-  }
-})
-
-arrowLeft.addEventListener('click', () => {
-  setTimeout(() => {
-    countOfShownCards = cardsToShow(window.innerWidth);
-    setCards(countOfShownCards);
-  }, 200)
-
-  setTimeout(() => {
-    setToRight();
-  }, 350)
-
-  for (let i = 0; i < ourFriendsItem.length; i++) {
-    setTimeout(() => {
-      ourFriendsItem[i].classList.add('turn-left')
-    }, 0)
-  }
-})
-
-
-
-
-
-// popup show up
-
-const searchObject = petName => {
-  for (let i = 0; i < petCards.length; i++) {
-    if (petCards[i]["name"] === petName) {
-      return petCards[i]
-    }
-  }
-}
-
-ourFriendsItem.forEach(x => {
-  x.addEventListener('click', (e) => {
-    const target = e.target;
-    let name = target
-
-    if (target.classList.contains('our-friends__item')) {
-      name = target.childNodes[3].innerHTML
-    } else {
-      name = target.parentNode.childNodes[3].innerHTML
-    }
-
-    const rightObject = searchObject(name);
-    modalWindow.innerHTML =
-      `
+      const rightObject = searchObject(name);
+      modalWindow.innerHTML =
+        `
       <div class="inner">
       <img src="${rightObject["img"]}" alt="${rightObject["name"]}">
       <div class="module-text-block">
@@ -244,24 +245,26 @@ ourFriendsItem.forEach(x => {
       <img class="close" src="../../assets/icons/module-close.png" alt="close">
     </div>
       `
-    modalWindow.classList.toggle('fixed-toggle')
-    body.classList.toggle('scroll-disable');
-    body.classList.toggle('black-bg');
-  })
-})
-
-document.addEventListener('click', (e) => {
-  if (body.classList.contains('black-bg')) {
-    if (e.target.classList.contains('close')
-      || e.target.classList.contains('black-bg')
-      || e.target.classList.contains('module-window')
-      || e.target.classList.contains('close-btn')) {
       modalWindow.classList.toggle('fixed-toggle')
       body.classList.toggle('scroll-disable');
       body.classList.toggle('black-bg');
+    })
+  })
+
+  document.addEventListener('click', (e) => {
+    if (body.classList.contains('black-bg')) {
+      if (e.target.classList.contains('close')
+        || e.target.classList.contains('black-bg')
+        || e.target.classList.contains('module-window')
+        || e.target.classList.contains('close-btn')) {
+        modalWindow.classList.toggle('fixed-toggle')
+        body.classList.toggle('scroll-disable');
+        body.classList.toggle('black-bg');
+      }
     }
-  }
+  })
 })
+
 
 
 
