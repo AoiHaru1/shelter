@@ -1,5 +1,5 @@
 # shelter
-A project in which it was necessary to make layout according to the layout and add a functional
+A project in which it was necessary to make layout according to the layout in figma and add a functional
 
 deploy: https://aoiharu1.github.io/shelter/shelter/pages/main/index.html
 
